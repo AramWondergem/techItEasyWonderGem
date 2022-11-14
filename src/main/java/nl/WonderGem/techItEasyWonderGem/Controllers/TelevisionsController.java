@@ -1,5 +1,6 @@
 package nl.WonderGem.techItEasyWonderGem.Controllers;
 
+import nl.WonderGem.techItEasyWonderGem.Exceptions.IndexOutOfBoundsException;
 import nl.WonderGem.techItEasyWonderGem.Exceptions.RecordNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +25,8 @@ public class TelevisionsController {
 
    @PutMapping ("/televisions/{id}")
     public ResponseEntity<Object> updateTelevision(@PathVariable int id, @RequestBody String television){
-       if ( id < 0) {
-           throw new RecordNotFoundException("ID cannot be found");
+       if ( id < 0 ) {
+           throw new IndexOutOfBoundsException("Use a positive number for the ID");
        }
         return ResponseEntity.noContent().build();
    }
