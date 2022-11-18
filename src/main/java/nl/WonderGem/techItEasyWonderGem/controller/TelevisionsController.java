@@ -1,7 +1,6 @@
-package nl.WonderGem.techItEasyWonderGem.Controllers;
+package nl.WonderGem.techItEasyWonderGem.controller;
 
-import nl.WonderGem.techItEasyWonderGem.Exceptions.IndexOutOfBoundsException;
-import nl.WonderGem.techItEasyWonderGem.Exceptions.RecordNotFoundException;
+import nl.WonderGem.techItEasyWonderGem.exception.IndexOutOfBoundsException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +25,7 @@ public class TelevisionsController {
    @PutMapping ("/televisions/{id}")
     public ResponseEntity<Object> updateTelevision(@PathVariable int id, @RequestBody String television){
        if ( id < 0 ) {
-           throw new IndexOutOfBoundsException("Use a positive number for the ID");
+           throw new IndexOutOfBoundsException("Use a positive number for the ID"); // todo waarschijnlijk naar service laag en aanpassen tekst
        }
         return ResponseEntity.noContent().build();
    }

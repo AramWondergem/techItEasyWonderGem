@@ -1,7 +1,7 @@
-package nl.WonderGem.techItEasyWonderGem.Controllers;
+package nl.WonderGem.techItEasyWonderGem.controller;
 
-import nl.WonderGem.techItEasyWonderGem.Exceptions.IndexOutOfBoundsException;
-import nl.WonderGem.techItEasyWonderGem.Exceptions.RecordNotFoundException;
+import nl.WonderGem.techItEasyWonderGem.exception.IndexOutOfBoundsException;
+import nl.WonderGem.techItEasyWonderGem.exception.RecordNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

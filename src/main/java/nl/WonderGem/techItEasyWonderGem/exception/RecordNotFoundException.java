@@ -1,6 +1,4 @@
-package nl.WonderGem.techItEasyWonderGem.Exceptions;
-
-import org.springframework.web.bind.annotation.RestController;
+package nl.WonderGem.techItEasyWonderGem.exception;
 
 import java.io.Serial;
 

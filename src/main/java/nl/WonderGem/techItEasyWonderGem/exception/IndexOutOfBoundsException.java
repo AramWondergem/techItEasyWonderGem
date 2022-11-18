@@ -1,4 +1,4 @@
-package nl.WonderGem.techItEasyWonderGem.Exceptions;
+package nl.WonderGem.techItEasyWonderGem.exception;
 
 import java.io.Serial;
 
