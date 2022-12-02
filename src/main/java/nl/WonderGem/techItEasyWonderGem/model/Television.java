@@ -1,17 +1,27 @@
 package nl.WonderGem.techItEasyWonderGem.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "televisions")
 public class Television {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @OneToOne
+    private RemoteController remoteController;
+
+    @OneToMany(mappedBy = "television")
+    private List<CiModule> ciModuleList;
+
+
+
+    @ManyToMany
+    @JoinTable(name="television_wall-bracket", joinColumns = @JoinColumn(name = "television_id", referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "wall_bracket_id", referencedColumnName = "id"))
+    private List<WallBracket> wallBracketList;
 
     private String type;
     private String brand;
@@ -30,27 +40,6 @@ public class Television {
     private Integer originalStock;
     private Integer sold;
 
-    public Television() {
-    }
-
-    public Television(String type, String brand, String name, Double price, Double availableSize, Double refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, Integer originalStock, Integer sold) {
-        this.type = type;
-        this.brand = brand;
-        this.name = name;
-        this.price = price;
-        this.availableSize = availableSize;
-        this.refreshRate = refreshRate;
-        this.screenType = screenType;
-        this.screenQuality = screenQuality;
-        this.smartTv = smartTv;
-        this.wifi = wifi;
-        this.voiceControl = voiceControl;
-        this.hdr = hdr;
-        this.bluetooth = bluetooth;
-        this.ambiLight = ambiLight;
-        this.originalStock = originalStock;
-        this.sold = sold;
-    }
 
     public long getId() {
         return id;
@@ -58,6 +47,30 @@ public class Television {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public RemoteController getRemoteController() {
+        return remoteController;
+    }
+
+    public void setRemoteController(RemoteController remoteController) {
+        this.remoteController = remoteController;
+    }
+
+    public List<CiModule> getCiModuleList() {
+        return ciModuleList;
+    }
+
+    public void setCiModuleList(List<CiModule> ciModuleList) {
+        this.ciModuleList = ciModuleList;
+    }
+
+    public List<WallBracket> getWallBracketList() {
+        return wallBracketList;
+    }
+
+    public void setWallBracketList(List<WallBracket> wallBracketList) {
+        this.wallBracketList = wallBracketList;
     }
 
     public String getType() {
