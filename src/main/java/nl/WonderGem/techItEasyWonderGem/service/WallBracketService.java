@@ -19,7 +19,7 @@ public class WallBracketService {
         this.repos = repos;
     }
 
-    public Iterable<WallBracketDto> getAllTelevisions() {
+    public Iterable<WallBracketDto> getAllWallBrackets() {
 
         List<WallBracket> reposWallBracketList = repos.findAll();
         List<WallBracketDto> wallBracketDtoList = new ArrayList<>();
@@ -34,7 +34,7 @@ public class WallBracketService {
         return wallBracketDtoList;
     }
 
-    public WallBracketDto getTelevisionByID(long id) {
+    public WallBracketDto getWallBracketByID(long id) {
 
         if (Utility.idChecker(id,repos)){
             WallBracket requestedItem = repos.findById(id).get();
@@ -45,7 +45,7 @@ public class WallBracketService {
         }
     }
 
-    public long createTelevision(WallBracketInputDto wallBracketInputDto) {
+    public long createWallBracket(WallBracketInputDto wallBracketInputDto) {
 
         WallBracket telSaved = repos.save(wallBracketInputDto.toWallBracket());
 

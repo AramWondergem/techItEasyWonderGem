@@ -18,7 +18,7 @@ public class CiModuleService {
         this.repos = repos;
     }
 
-    public Iterable<CiModuleDto> getAllTelevisions() {
+    public Iterable<CiModuleDto> getAllCiModules() {
 
         List<CiModule> reposCiModuleList = repos.findAll();
         List<CiModuleDto> ciModuleDtoList = new ArrayList<>();
@@ -33,7 +33,7 @@ public class CiModuleService {
         return ciModuleDtoList;
     }
 
-    public CiModuleDto getTelevisionByID(long id) {
+    public CiModuleDto getCiModuleByID(long id) {
 
         if (Utility.idChecker(id,repos)){
             CiModule requestedItem = repos.findById(id).get();
@@ -44,7 +44,7 @@ public class CiModuleService {
         }
     }
 
-    public long createTelevision(CiModuleInputDto ciModuleInputDto) {
+    public long createCiModule(CiModuleInputDto ciModuleInputDto) {
 
         CiModule telSaved = repos.save(ciModuleInputDto.toCiModule());
 

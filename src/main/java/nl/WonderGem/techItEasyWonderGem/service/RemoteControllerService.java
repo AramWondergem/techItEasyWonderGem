@@ -19,7 +19,7 @@ public class RemoteControllerService {
         this.repos = repos;
     }
 
-    public Iterable<RemoteControllerDto> getAllTelevisions() {
+    public Iterable<RemoteControllerDto> getAllRemoteControllers() {
 
         List<RemoteController> reposRemoteControllerList = repos.findAll();
         List<RemoteControllerDto> remoteControllerDtoList = new ArrayList<>();
@@ -34,7 +34,7 @@ public class RemoteControllerService {
         return remoteControllerDtoList;
     }
 
-    public RemoteControllerDto getTelevisionByID(long id) {
+    public RemoteControllerDto getRemoteControllerByID(long id) {
 
         if (Utility.idChecker(id,repos)){
             RemoteController requestedItem = repos.findById(id).get();
@@ -45,7 +45,7 @@ public class RemoteControllerService {
         }
     }
 
-    public long createTelevision(RemoteControllerInputDto remoteControllerInputDto) {
+    public long createRemoteController(RemoteControllerInputDto remoteControllerInputDto) {
 
         RemoteController telSaved = repos.save(remoteControllerInputDto.toRemoteController());
 

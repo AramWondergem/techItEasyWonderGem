@@ -1,6 +1,6 @@
 package nl.WonderGem.techItEasyWonderGem.controller;
 
-import nl.WonderGem.techItEasyWonderGem.dto.TelevisionDto;
+
 import nl.WonderGem.techItEasyWonderGem.dto.TelevisionInputDto;
 import nl.WonderGem.techItEasyWonderGem.dto.TelevisionUpdateInputDto;
 import nl.WonderGem.techItEasyWonderGem.service.TelevisionService;
@@ -17,11 +17,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/televisions")
-public class TelevisionsController {
+public class TelevisionController {
 
     private final TelevisionService service;
 
-    public TelevisionsController(TelevisionService service) {
+    public TelevisionController(TelevisionService service) {
         this.service = service;
     }
 
