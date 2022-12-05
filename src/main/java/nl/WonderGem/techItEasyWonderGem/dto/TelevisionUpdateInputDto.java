@@ -1,13 +1,20 @@
 package nl.WonderGem.techItEasyWonderGem.dto;
 
+import nl.WonderGem.techItEasyWonderGem.model.CiModule;
+import nl.WonderGem.techItEasyWonderGem.model.RemoteController;
 import nl.WonderGem.techItEasyWonderGem.model.Television;
+import nl.WonderGem.techItEasyWonderGem.model.WallBracket;
 
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 
 // I added this class, because I wanted to update the television without knowing the obligated fields in the TelevisionInputDto.
 public class TelevisionUpdateInputDto {
 
+    public RemoteController remoteController;
+    public List<CiModule> ciModuleList;
+    public List<WallBracket> wallBracketList;
     public String type;
     public String brand;
     public String name;
@@ -26,6 +33,9 @@ public class TelevisionUpdateInputDto {
     public Integer sold;
 
     public Television toUpdatedTelevision(Television televisionToBeUpdated) {
+        televisionToBeUpdated.setRemoteController(remoteController);
+        televisionToBeUpdated.setCiModuleList(ciModuleList);
+        televisionToBeUpdated.setWallBracketList(wallBracketList);
         televisionToBeUpdated.setType(type);
         televisionToBeUpdated.setBrand(brand);
         televisionToBeUpdated.setName(name);

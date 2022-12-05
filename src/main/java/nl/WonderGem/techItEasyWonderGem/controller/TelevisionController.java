@@ -1,6 +1,7 @@
 package nl.WonderGem.techItEasyWonderGem.controller;
 
 
+import nl.WonderGem.techItEasyWonderGem.dto.IdInputDto;
 import nl.WonderGem.techItEasyWonderGem.dto.TelevisionInputDto;
 import nl.WonderGem.techItEasyWonderGem.dto.TelevisionUpdateInputDto;
 import nl.WonderGem.techItEasyWonderGem.service.TelevisionService;
@@ -71,15 +72,20 @@ public class TelevisionController {
 
 
     @PutMapping ("/{id}")
-    public ResponseEntity<Object> updateTelevision(@PathVariable long id, @RequestBody TelevisionUpdateInputDto telUpdateInputDto){
-
-        boolean succesfulUpdate = service.updateTelevision(id,telUpdateInputDto);
-
-        if (succesfulUpdate) {
-            return ResponseEntity.noContent().build();
+    public ResponseEntity<Object> updateTelevision(@PathVariable long id, @RequestBody TelevisionUpdateInputDto telUpdateInputDto,BindingResult br){
+        if (br.hasErrors()) {
+            String erroMessage = Utility.badRequestMessageGenerator(br);
+            return new ResponseEntity<>(erroMessage, HttpStatus.BAD_REQUEST);
         } else {
-            return ResponseEntity.internalServerError().body(HttpStatus.INTERNAL_SERVER_ERROR);
+            boolean succesfulUpdate = service.updateTelevision(id,telUpdateInputDto);
+
+            if (succesfulUpdate) {
+                return ResponseEntity.noContent().build();
+            } else {
+                return ResponseEntity.internalServerError().body(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
         }
+
 
     }
 //
@@ -94,5 +100,52 @@ public class TelevisionController {
             return ResponseEntity.noContent().build();
         }
 
+    }
+
+    @PutMapping ("/{id}/remotecontroller")
+    public ResponseEntity<Object> adRemoteControllerToTelevision(@PathVariable long id, @RequestBody IdInputDto idInputDto,BindingResult br){
+        if (br.hasErrors()) {
+            String erroMessage = Utility.badRequestMessageGenerator(br);
+            return new ResponseEntity<>(erroMessage, HttpStatus.BAD_REQUEST);
+        } else {
+            boolean succesfulUpdate = service.assignRemoteControllerToTelevision(id, idInputDto.id);
+
+            if (succesfulUpdate) {
+                return ResponseEntity.ok("Remote controller added to telivision");
+            } else {
+                return ResponseEntity.internalServerError().body(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+    }
+
+    @PutMapping ("/{id}/cimodule")
+    public ResponseEntity<Object> adCiModuleToTelevision(@PathVariable long id, @RequestBody IdInputDto idInputDto,BindingResult br){
+        if (br.hasErrors()) {
+            String erroMessage = Utility.badRequestMessageGenerator(br);
+            return new ResponseEntity<>(erroMessage, HttpStatus.BAD_REQUEST);
+        } else {
+            boolean succesfulUpdate = service.assignCiModuleToTelevision(id, idInputDto.id);
+
+            if (succesfulUpdate) {
+                return ResponseEntity.ok("CI module added to telivision");
+            } else {
+                return ResponseEntity.internalServerError().body(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+    }
+    @PutMapping ("/{id}/wallbracket")
+    public ResponseEntity<Object> adWallBracketToTelevision(@PathVariable long id, @RequestBody IdInputDto idInputDto,BindingResult br){
+        if (br.hasErrors()) {
+            String erroMessage = Utility.badRequestMessageGenerator(br);
+            return new ResponseEntity<>(erroMessage, HttpStatus.BAD_REQUEST);
+        } else {
+            boolean succesfulUpdate = service.assignWallBracketToTelevision(id, idInputDto.id);
+
+            if (succesfulUpdate) {
+                return ResponseEntity.ok("CI module added to telivision");
+            } else {
+                return ResponseEntity.internalServerError().body(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
     }
 }

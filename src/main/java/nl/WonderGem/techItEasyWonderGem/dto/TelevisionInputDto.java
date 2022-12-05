@@ -1,11 +1,19 @@
 package nl.WonderGem.techItEasyWonderGem.dto;
 
+import nl.WonderGem.techItEasyWonderGem.model.CiModule;
+import nl.WonderGem.techItEasyWonderGem.model.RemoteController;
 import nl.WonderGem.techItEasyWonderGem.model.Television;
+import nl.WonderGem.techItEasyWonderGem.model.WallBracket;
 
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 public class TelevisionInputDto {
     public long id;
+
+    public RemoteController remoteController;
+    public List<CiModule> ciModuleList;
+    public List<WallBracket> wallBracketList;
     @NotBlank
     public String type;
     @NotBlank
@@ -30,6 +38,9 @@ public class TelevisionInputDto {
         Television t = new Television();
 
         t.setId(id);
+        t.setRemoteController(remoteController);
+        t.setCiModuleList(ciModuleList);
+        t.setWallBracketList(wallBracketList);
         t.setType(type);
         t.setBrand(brand);
         t.setName(name);

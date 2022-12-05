@@ -65,6 +65,9 @@ public class Television {
         this.ciModuleList = ciModuleList;
     }
 
+    public void addCiModuleToList (CiModule ciModule) {
+        this.ciModuleList.add(ciModule);
+    }
     public List<WallBracket> getWallBracketList() {
         return wallBracketList;
     }
@@ -73,6 +76,9 @@ public class Television {
         this.wallBracketList = wallBracketList;
     }
 
+    public void addWallBracketToList(WallBracket wallBracket){
+        this.wallBracketList.add(wallBracket);
+    }
     public String getType() {
         return type;
     }
