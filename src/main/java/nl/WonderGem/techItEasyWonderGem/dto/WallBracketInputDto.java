@@ -27,4 +27,15 @@ public class WallBracketInputDto {
 
         return w;
     }
+
+    public WallBracket toUpdatedWallBracket (WallBracket w) {
+
+        w.setId(id);
+        w.setTelevisionList(televisionList);
+        w.setAjustable(ajustable);
+        w.setName(name);
+        w.setPrice(price);
+
+        return w;
+    }
 }

@@ -32,4 +32,18 @@ public class RemoteControllerInputDto {
 
         return r;
     }
+
+    public RemoteController toUpdatedRemoteController(RemoteController r) {
+
+        r.setId(id);
+        r.setTelevision(television);
+        r.setCompatibleWith(compatibleWith);
+        r.setBatteryType(batteryType);
+        r.setName(name);
+        r.setBrand(brand);
+        r.setPrice(price);
+        r.setOriginalStock(originalStock);
+
+        return r;
+    }
 }

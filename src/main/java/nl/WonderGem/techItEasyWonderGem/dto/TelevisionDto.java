@@ -2,9 +2,9 @@ package nl.WonderGem.techItEasyWonderGem.dto;
 
 import nl.WonderGem.techItEasyWonderGem.model.Television;
 
-import javax.validation.constraints.NotBlank;
-
 public class TelevisionDto {
+
+   // todo aanpassen naar nieuwe relaties
 
    public long id;
    public String type;

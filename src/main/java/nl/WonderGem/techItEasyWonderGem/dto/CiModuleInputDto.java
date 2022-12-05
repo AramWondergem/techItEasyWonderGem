@@ -25,4 +25,15 @@ public class CiModuleInputDto {
 
         return c;
     }
+
+    public CiModule toUpdatedCiModule (CiModule c) {
+
+        c.setId(id);
+        c.setTelevision(television);
+        c.setName(name);
+        c.setType(type);
+        c.setPrice(price);
+
+        return c;
+    }
 }
