@@ -9,8 +9,6 @@ import java.util.List;
 
 public class TelevisionDto {
 
-   // todo aanpassen naar nieuwe relaties
-
    public long id;
 
    public RemoteController remoteController;

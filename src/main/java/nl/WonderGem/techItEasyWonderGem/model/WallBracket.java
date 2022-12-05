@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "wall-brackets")
+@Table(name = "wall_brackets")
 public class WallBracket {
 
         @Id
@@ -36,6 +36,13 @@ public class WallBracket {
 
         public void setTelevisionList(List<Television> televisionList) {
                 this.televisionList = televisionList;
+        }
+
+        public void addTelevisionList(List<Television> televisionList) {
+                for (Television tv :
+                        televisionList) {
+                        this.televisionList.add(tv);
+                }
         }
 
         public String getSize() {

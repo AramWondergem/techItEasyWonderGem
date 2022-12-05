@@ -4,10 +4,11 @@ import nl.WonderGem.techItEasyWonderGem.model.CiModule;
 import nl.WonderGem.techItEasyWonderGem.model.Television;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class CiModuleInputDto {
     public long id;
-    @NotBlank
+    @NotNull
     public Television television;
     @NotBlank
     public String name;

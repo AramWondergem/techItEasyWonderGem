@@ -1,5 +1,7 @@
 package nl.WonderGem.techItEasyWonderGem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,16 +13,18 @@ public class Television {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne
+    @OneToOne(mappedBy = "television") // This relationship is owned by the remoteController class, because I wanted to add the television when I created a remotecontroller
+    @JsonIgnore
     private RemoteController remoteController;
 
-    @OneToMany(mappedBy = "television")
+    @OneToMany(mappedBy = "television")// This relationship is owned by the ciModule class, because I wanted to add a list of  television when I created a ciModule
+    @JsonIgnore
     private List<CiModule> ciModuleList;
 
 
 
     @ManyToMany
-    @JoinTable(name="television_wall-bracket", joinColumns = @JoinColumn(name = "television_id", referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "wall_bracket_id", referencedColumnName = "id"))
+    @JoinTable(name="television_wall_bracket", joinColumns = @JoinColumn(name = "television_id", referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "wall_bracket_id", referencedColumnName = "id"))
     private List<WallBracket> wallBracketList;
 
     private String type;
@@ -68,6 +72,16 @@ public class Television {
     public void addCiModuleToList (CiModule ciModule) {
         this.ciModuleList.add(ciModule);
     }
+
+    public void addCiModuleListToList(List<CiModule> ciModuleList){
+        if(!(ciModuleList == null)) { // I had to include this to prevent null pointer exceptions.
+            if (!(this.ciModuleList == null)) {
+                this.ciModuleList.addAll(ciModuleList);
+            } else {
+                this.ciModuleList = ciModuleList;
+            }
+        }
+    }
     public List<WallBracket> getWallBracketList() {
         return wallBracketList;
     }
@@ -77,8 +91,18 @@ public class Television {
     }
 
     public void addWallBracketToList(WallBracket wallBracket){
-        this.wallBracketList.add(wallBracket);
+
+        if(!(wallBracket == null)) {
+            this.wallBracketList.add(wallBracket);
+        }
     }
+
+    public void addWallBracketListToList(List<WallBracket> wallBracketList) {
+        if(!(wallBracketList == null)) {// I had to include this to prevent null pointer exceptions.
+            this.wallBracketList.addAll(wallBracketList);
+        }
+    }
+
     public String getType() {
         return type;
     }

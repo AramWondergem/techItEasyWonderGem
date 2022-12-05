@@ -40,7 +40,7 @@ public class Utility {
 
             throw new IndexOutOfBoundsException("The ID should be a positive number");
 
-        } else if (!repos.existsById(id)) {
+        } else if (!repos.existsById(id)) { // checks if id exist in the database
 
             throw new RecordNotFoundException("This ID does not match with an instance in the database");
 

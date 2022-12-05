@@ -5,13 +5,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "remote-controllers")
+@Table(name = "remote_controllers")
 public class RemoteController {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(mappedBy = "remoteController")
+    @OneToOne
     @JsonIgnore
     private Television television;
 

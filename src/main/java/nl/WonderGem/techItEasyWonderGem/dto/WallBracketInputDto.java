@@ -31,7 +31,7 @@ public class WallBracketInputDto {
     public WallBracket toUpdatedWallBracket (WallBracket w) {
 
         w.setId(id);
-        w.setTelevisionList(televisionList);
+        w.addTelevisionList(televisionList); // this is not a set function, because a set function will override the list. I did not want that, but you should take this into account.
         w.setAjustable(ajustable);
         w.setName(name);
         w.setPrice(price);

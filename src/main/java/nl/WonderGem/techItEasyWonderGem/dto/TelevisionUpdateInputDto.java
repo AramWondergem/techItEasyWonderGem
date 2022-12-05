@@ -34,8 +34,19 @@ public class TelevisionUpdateInputDto {
 
     public Television toUpdatedTelevision(Television televisionToBeUpdated) {
         televisionToBeUpdated.setRemoteController(remoteController);
-        televisionToBeUpdated.setCiModuleList(ciModuleList);
-        televisionToBeUpdated.setWallBracketList(wallBracketList);
+
+        // Below if else statements is to catch null pointer exceptions
+        if (televisionToBeUpdated.getCiModuleList()==null) {
+            televisionToBeUpdated.setCiModuleList(ciModuleList);
+        } else {
+            televisionToBeUpdated.addCiModuleListToList(ciModuleList);
+        }
+
+        if (televisionToBeUpdated.getWallBracketList()==null) {
+            televisionToBeUpdated.setWallBracketList(wallBracketList);
+        } else {
+            televisionToBeUpdated.addWallBracketListToList(wallBracketList);
+        }
         televisionToBeUpdated.setType(type);
         televisionToBeUpdated.setBrand(brand);
         televisionToBeUpdated.setName(name);

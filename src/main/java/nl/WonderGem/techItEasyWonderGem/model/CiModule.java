@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ci-modules")
+@Table(name = "ci_modules")
 public class CiModule {
 
     @Id
@@ -13,7 +13,6 @@ public class CiModule {
     private long id;
 
     @ManyToOne
-    @JsonIgnore
     private Television television;
 
 

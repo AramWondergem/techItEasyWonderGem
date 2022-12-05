@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/ciModules")
+@RequestMapping("/cimodules")
 public class CiModuleController {
 
     private final CiModuleService service;
@@ -41,7 +41,7 @@ public class CiModuleController {
             return new ResponseEntity<>(erroMessage, HttpStatus.BAD_REQUEST);
         } else {
             Long createdID = service.createCiModule(telInputDto);
-            URI uri = Utility.uriGenerator("/ciModules/", createdID);
+            URI uri = Utility.uriGenerator("/cimodules/", createdID);
             return ResponseEntity.created(uri).body("CiModule created");
         }
 

@@ -142,10 +142,12 @@ public class TelevisionController {
             boolean succesfulUpdate = service.assignWallBracketToTelevision(id, idInputDto.id);
 
             if (succesfulUpdate) {
-                return ResponseEntity.ok("CI module added to telivision");
+                return ResponseEntity.ok("Wall bracket added to television");
             } else {
                 return ResponseEntity.internalServerError().body(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
     }
 }
+
+//todo add control if objecdt is already added to television

@@ -4,11 +4,12 @@ import nl.WonderGem.techItEasyWonderGem.model.RemoteController;
 import nl.WonderGem.techItEasyWonderGem.model.Television;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 public class RemoteControllerInputDto {
 
     public long id;
-    @NotBlank
+    @NotNull
     public Television television;
     public String compatibleWith;
     public String batteryType;
