@@ -44,7 +44,7 @@ public class TelevisionController {
             return new ResponseEntity<>(erroMessage, HttpStatus.BAD_REQUEST);
         } else {
             Long createdID = service.createTelevision(telInputDto);
-            URI uri = Utility.uriGenerator("/televisions/", createdID);
+            URI uri = Utility.uriGenerator("/televisions/", String.valueOf(createdID));
             return ResponseEntity.created(uri).body("Television created");
         }
 
@@ -63,7 +63,7 @@ public class TelevisionController {
         for (TelevisionInputDto telDto :
                 listTelInputDto) {
             Long createdID = service.createTelevision(telDto);
-            URI uri = Utility.uriGenerator("/televisions/", createdID);
+            URI uri = Utility.uriGenerator("/televisions/", String.valueOf(createdID));
             uriList.add(uri);
         }
         return new ResponseEntity<>(uriList,HttpStatus.CREATED);

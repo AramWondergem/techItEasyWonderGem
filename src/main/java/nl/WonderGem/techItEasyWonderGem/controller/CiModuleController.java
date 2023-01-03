@@ -41,7 +41,7 @@ public class CiModuleController {
             return new ResponseEntity<>(erroMessage, HttpStatus.BAD_REQUEST);
         } else {
             Long createdID = service.createCiModule(telInputDto);
-            URI uri = Utility.uriGenerator("/cimodules/", createdID);
+            URI uri = Utility.uriGenerator("/cimodules/", String.valueOf(createdID));
             return ResponseEntity.created(uri).body("CiModule created");
         }
 
@@ -60,7 +60,7 @@ public class CiModuleController {
         for (CiModuleInputDto itemDto :
                 ciModuleListInputDto) {
             Long createdID = service.createCiModule(itemDto);
-            URI uri = Utility.uriGenerator("/ciModules/", createdID);
+            URI uri = Utility.uriGenerator("/ciModules/", String.valueOf(createdID));
             uriList.add(uri);
         }
         return new ResponseEntity<>(uriList,HttpStatus.CREATED);

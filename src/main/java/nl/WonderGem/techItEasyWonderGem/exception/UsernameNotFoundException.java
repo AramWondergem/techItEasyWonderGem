@@ -1,17 +1,15 @@
 package nl.WonderGem.techItEasyWonderGem.exception;
 
-
 import java.io.Serial;
 
-public class RecordNotFoundException extends RuntimeException {
+public class UsernameNotFoundException extends RuntimeException{
     @Serial
     private static final long serialVersionUID = 1L;
 
-    public RecordNotFoundException(){
+    public UsernameNotFoundException(){
         super();
     }
-    public RecordNotFoundException(String message) {
+    public UsernameNotFoundException(String message) {
         super(message);
     }
-
 }

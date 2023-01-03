@@ -41,7 +41,7 @@ public class RemoteControllerController {
             return new ResponseEntity<>(erroMessage, HttpStatus.BAD_REQUEST);
         } else {
             Long createdID = service.createRemoteController(telInputDto);
-            URI uri = Utility.uriGenerator("/remotecontrollers/", createdID);
+            URI uri = Utility.uriGenerator("/remotecontrollers/", String.valueOf(createdID));
             return ResponseEntity.created(uri).body("RemoteController created");
         }
 
@@ -60,7 +60,7 @@ public class RemoteControllerController {
         for (RemoteControllerInputDto itemDto :
                 remoteControllerListInputDto) {
             Long createdID = service.createRemoteController(itemDto);
-            URI uri = Utility.uriGenerator("/remotecontrollers/", createdID);
+            URI uri = Utility.uriGenerator("/remotecontrollers/", String.valueOf(createdID));
             uriList.add(uri);
         }
         return new ResponseEntity<>(uriList,HttpStatus.CREATED);

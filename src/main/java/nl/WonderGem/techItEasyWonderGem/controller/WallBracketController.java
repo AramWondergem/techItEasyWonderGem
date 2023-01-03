@@ -42,7 +42,7 @@ public class WallBracketController {
             return new ResponseEntity<>(erroMessage, HttpStatus.BAD_REQUEST);
         } else {
             Long createdID = service.createWallBracket(telInputDto);
-            URI uri = Utility.uriGenerator("/wallbrackets/", createdID);
+            URI uri = Utility.uriGenerator("/wallbrackets/", String.valueOf(createdID));
             return ResponseEntity.created(uri).body("WallBracket created");
         }
 
@@ -61,7 +61,7 @@ public class WallBracketController {
         for (WallBracketInputDto itemDto :
                 wallBracketListInputDto) {
             Long createdID = service.createWallBracket(itemDto);
-            URI uri = Utility.uriGenerator("/wallbrackets/", createdID);
+            URI uri = Utility.uriGenerator("/wallbrackets/", String.valueOf(createdID));
             uriList.add(uri);
         }
         return new ResponseEntity<>(uriList,HttpStatus.CREATED);

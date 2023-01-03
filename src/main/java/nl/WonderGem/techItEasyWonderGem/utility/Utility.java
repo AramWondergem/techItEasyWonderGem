@@ -25,7 +25,7 @@ public class Utility {
         return sb.toString();
     }
 
-    public static URI uriGenerator(String path, Long createdID) {
+    public static URI uriGenerator(String path, String createdID) {
         URI uri = URI.create(
                 ServletUriComponentsBuilder.
                         fromCurrentContextPath().
