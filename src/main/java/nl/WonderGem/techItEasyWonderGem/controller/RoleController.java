@@ -7,14 +7,13 @@ import nl.WonderGem.techItEasyWonderGem.utility.Utility;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
+@RequestMapping("/roles")
 public class RoleController {
     private final RoleService service;
 
@@ -23,7 +22,7 @@ public class RoleController {
     }
 
 
-    @PostMapping("/roles")
+    @PostMapping("")
     public ResponseEntity<Object> createRole(@Valid @RequestBody RoleDto role, BindingResult br) {
 
         if (br.hasErrors()) {
@@ -37,5 +36,15 @@ public class RoleController {
     }
 
 
-    //todo aanvullen getMapping voor alle en een
+
+    @GetMapping("")
+    public ResponseEntity<Object> getAllRoles() {
+        return ResponseEntity.ok(service.getAllRoles());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteRole (@PathVariable String id) {
+        service.deleteRole(id);
+        return ResponseEntity.noContent().build();
+    }
 }

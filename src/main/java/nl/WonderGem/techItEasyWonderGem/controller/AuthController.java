@@ -8,9 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/auth")
 public class AuthController {
 
     private final AuthService authService;
@@ -19,7 +21,7 @@ public class AuthController {
         this.authService = authService;
     }
 
-    @PostMapping("/auth")
+    @PostMapping("")
     public ResponseEntity<Object> signIn(@RequestBody AuthDto authDto) {
 
         try {
@@ -31,7 +33,7 @@ public class AuthController {
                     .body("Token generated");
         }
         catch (AuthenticationException ex) {
-            return new ResponseEntity(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
         }
     }
 }

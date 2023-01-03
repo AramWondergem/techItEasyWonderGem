@@ -1,6 +1,8 @@
 package nl.WonderGem.techItEasyWonderGem.security;
 
+import nl.WonderGem.techItEasyWonderGem.mapper.UserMapper;
 import nl.WonderGem.techItEasyWonderGem.repository.UserRepository;
+import nl.WonderGem.techItEasyWonderGem.service.RoleService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -44,15 +46,21 @@ public class SecurityConfig  {
         return new BCryptPasswordEncoder();
     }
 
+
+
     @Bean //todo aanpassen
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .httpBasic().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/users").permitAll()
                 .antMatchers(HttpMethod.POST, "/auth").permitAll()
-                .antMatchers("/secret").hasAuthority("ADMIN")
-                .antMatchers("/**").hasAnyAuthority("USER", "ADMIN")
+                .antMatchers(HttpMethod.POST, "/users").permitAll()
+                .antMatchers("/televisions").hasAnyAuthority("USER","ADMIN")
+                .antMatchers( "/cimodules").hasAnyAuthority("USER","ADMIN")
+                .antMatchers( "/remotecontrollers").hasAnyAuthority("USER","ADMIN")
+                .antMatchers( "/wallbrackets").hasAnyAuthority("USER","ADMIN")
+                .antMatchers("/users").hasAuthority("ADMIN")
+                .antMatchers("/roles").hasAuthority("ADMIN")
                 .and()
                 .addFilterBefore(new JwtRequestFilter(jwtService, userDetailsService()), UsernamePasswordAuthenticationFilter.class)
                 .csrf().disable()

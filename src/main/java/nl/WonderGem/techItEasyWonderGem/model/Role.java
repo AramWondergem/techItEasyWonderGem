@@ -1,5 +1,6 @@
 package nl.WonderGem.techItEasyWonderGem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,16 +12,16 @@ import java.util.Collection;
 
 
 @Entity
+@Getter
+@Setter
 @Table(name = "roles")
 public class Role {
 
 
     @Id
-    @Getter
-    @Setter
     private String rolename;
 
-
+@JsonIgnore
     @ManyToMany(mappedBy = "roles")
     private Collection<User> users;
 

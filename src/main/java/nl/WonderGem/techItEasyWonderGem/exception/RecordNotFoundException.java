@@ -1,5 +1,6 @@
 package nl.WonderGem.techItEasyWonderGem.exception;
 
+
 import java.io.Serial;
 
 public class RecordNotFoundException extends RuntimeException {
